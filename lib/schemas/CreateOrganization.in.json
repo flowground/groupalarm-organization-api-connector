@@ -1,0 +1,103 @@
+{
+    "type": "object",
+    "properties": {
+        "requestBody": {
+            "description": "Organization payload",
+            "type": "object",
+            "properties": {
+                "availableUsers": {
+                    "description": "AvailableUsers payload",
+                    "type": "object",
+                    "properties": {
+                        "countAvailable": {
+                            "description": "count of available users",
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-name": "CountAvailable"
+                        },
+                        "countInEvent": {
+                            "description": "count of \"in-event\" users",
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-name": "CountInEvent"
+                        },
+                        "countNotAvailable": {
+                            "description": "count of not available users",
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-name": "CountNotAvailable"
+                        }
+                    },
+                    "x-go-package": "groupalarm.com/go/organization/api/services"
+                },
+                "availableUsersTotal": {
+                    "description": "AvailableUsers payload",
+                    "type": "object",
+                    "properties": {
+                        "countAvailable": {
+                            "description": "count of available users",
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-name": "CountAvailable"
+                        },
+                        "countInEvent": {
+                            "description": "count of \"in-event\" users",
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-name": "CountInEvent"
+                        },
+                        "countNotAvailable": {
+                            "description": "count of not available users",
+                            "type": "integer",
+                            "format": "int64",
+                            "x-go-name": "CountNotAvailable"
+                        }
+                    },
+                    "x-go-package": "groupalarm.com/go/organization/api/services"
+                },
+                "description": {
+                    "description": "user defined description",
+                    "type": "string",
+                    "x-go-name": "Description"
+                },
+                "hasChildren": {
+                    "description": "defines if it's the parent of any other organization",
+                    "type": "boolean",
+                    "x-go-name": "HasChildren"
+                },
+                "id": {
+                    "description": "ID of this organization",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "ID"
+                },
+                "isDemo": {
+                    "description": "is true, when there is no billing configuration for this organization",
+                    "type": "boolean",
+                    "x-go-name": "IsDemo"
+                },
+                "name": {
+                    "description": "user defined name",
+                    "type": "string",
+                    "x-go-name": "Name"
+                },
+                "ownerIDs": {
+                    "description": "user id of the organization owner/creator",
+                    "type": "array",
+                    "items": {
+                        "type": "integer",
+                        "format": "int64"
+                    },
+                    "x-go-name": "OwnerIDs"
+                },
+                "parentID": {
+                    "description": "optional: ID of the parent organization",
+                    "type": "integer",
+                    "format": "int64",
+                    "x-go-name": "ParentID"
+                }
+            },
+            "x-go-package": "groupalarm.com/go/organization/api/services"
+        }
+    }
+}

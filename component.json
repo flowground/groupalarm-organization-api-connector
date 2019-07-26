@@ -1,0 +1,197 @@
+{
+    "title": "groupalarm Organization API",
+    "description": "The organization service implements a the organization logic in GroupAlarm.\n\n# Authentication\n\n<!-- ReDoc-Inject: <security-definitions> -->",
+    "docsUrl": "",
+    "url": "https://app.groupalarm.com/api/v1",
+    "envVars": {},
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://app.groupalarm.com/api/v1",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "auth_API_Token": {
+                "label": "API-TOKEN (API_Token)",
+                "viewClass": "TextFieldView",
+                "note": "To use this API, you need an API-Token from the RBAC settings of your GroupAlarm organization. Place the token inside the HTTP-Header `API-Token` for every request, otherwise the API will return an \"401 Unauthorized\" error for your request."
+            },
+            "auth_Personal-Access-Token": {
+                "label": "Personal-Access-Token (Personal-Access-Token)",
+                "viewClass": "TextFieldView",
+                "note": "To use this API, you need a Personal Access Token from your profile settings. Place the token inside the HTTP-Header `Personal-Access-Token` for every request, otherwise the API will return an \"401 Unauthorized\" error for your request."
+            }
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "UpdateOrganization": {
+            "main": "./lib/actions/UpdateOrganization.js",
+            "title": "UpdateOrganization",
+            "description": "Update an existing organization with passed organization payload",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/UpdateOrganization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "CreateOrganization": {
+            "main": "./lib/actions/CreateOrganization.js",
+            "title": "CreateOrganization",
+            "description": "Create an organization with passed organization payload",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/CreateOrganization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetOrganization": {
+            "main": "./lib/actions/GetOrganization.js",
+            "title": "GetOrganization",
+            "description": "Get specific organization by its ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetOrganization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetChildren": {
+            "main": "./lib/actions/GetChildren.js",
+            "title": "GetChildren",
+            "description": "Get paginated children of specific organization by its ID",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetChildren.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetOwnerInParentOrganization": {
+            "main": "./lib/actions/GetOwnerInParentOrganization.js",
+            "title": "GetOwnerInParentOrganization",
+            "description": "Gets the topmost parent organization the given user is the owner of",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetOwnerInParentOrganization.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "AddOwner": {
+            "main": "./lib/actions/AddOwner.js",
+            "title": "AddOwner",
+            "description": "Update an existing organization by adding a new owner",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/AddOwner.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "RemoveOwner": {
+            "main": "./lib/actions/RemoveOwner.js",
+            "title": "RemoveOwner",
+            "description": "Update an existing organization by removing an existing owner",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/RemoveOwner.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetOwnedOrganizations": {
+            "main": "./lib/actions/GetOwnedOrganizations.js",
+            "title": "GetOwnedOrganizations",
+            "description": "Get all organizations for user in JWT token where the user is the owner of",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetOwnedOrganizations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "GetPaginatedOrganizations": {
+            "main": "./lib/actions/GetPaginatedOrganizations.js",
+            "title": "GetPaginatedOrganizations",
+            "description": "Get paginated organizations for user with the passed JWT token",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/GetPaginatedOrganizations.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}

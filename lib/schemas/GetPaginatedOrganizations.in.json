@@ -1,0 +1,11 @@
+{
+    "type": "object",
+    "properties": {
+        "limit": {
+            "type": "int64"
+        },
+        "offset": {
+            "type": "int64"
+        }
+    }
+}
